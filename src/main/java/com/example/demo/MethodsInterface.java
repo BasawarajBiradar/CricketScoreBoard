@@ -13,7 +13,7 @@ public interface MethodsInterface {
 
 	String getTotalTeamScore();
 
-	PlayerInfo addPlayerInDatabase(int playerId, String playerName);
+	PlayerInfo addPlayerInDatabase(String playerName);
 
 	List<PlayerInfo> getListOfPlayers();
 

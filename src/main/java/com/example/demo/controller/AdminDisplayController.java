@@ -31,8 +31,14 @@ public class AdminDisplayController {
 	@GetMapping("/wicket")
 	public String updateWicketStatusOfPlayer(@RequestParam(name = "playerId") int playerId, Model model) {
 		PlayerInfo player = serviceMethod.updatePlayerWicket(playerId);
-		model.addAttribute("player", player);
-		return "PlayerDisplay";
+		if (player != null) {
+			model.addAttribute("player", player);
+			return "PlayerDisplay";
+		} else {
+			String result = "player is already out";
+			model.addAttribute("result", result);
+			return "AdminHomePage";
+		}
 	}
 
 	@GetMapping("/list")
@@ -50,15 +56,13 @@ public class AdminDisplayController {
 	}
 
 	@GetMapping("/add")
-	public String addPlayerInDatabase(@RequestParam(name = "playerId") int playerId,
-			@RequestParam(name = "playerName") String playerName, Model model) {
-		PlayerInfo player = serviceMethod.addPlayerInDatabase(playerId, playerName);
+	public String addPlayerInDatabase(@RequestParam(name = "playerName") String playerName, Model model) {
+		PlayerInfo player = serviceMethod.addPlayerInDatabase(playerName);
 		if (player != null) {
 			model.addAttribute("player", player);
 			return "PlayerDisplay";
-		}
-		else {
-			String result="player adding error";
+		} else {
+			String result = "player adding error";
 			model.addAttribute("result", result);
 			return "AdminHomePage";
 		}
@@ -78,9 +82,8 @@ public class AdminDisplayController {
 		if (player != null) {
 			model.addAttribute("player", player);
 			return "PlayerDisplay";
-		}
-		else {
-			String result="updating score error";
+		} else {
+			String result = "updating score error";
 			model.addAttribute("result", result);
 			return "AdminHomePage";
 		}

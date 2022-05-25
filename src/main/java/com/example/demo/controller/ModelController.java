@@ -29,8 +29,8 @@ public class ModelController {
 	}
 	
 	@GetMapping("/add/{playerId}/{playerName}")
-	public PlayerInfo addPlayerInDatabase(@PathVariable (name = "playerId") int playerId, @PathVariable (name = "playerName") String playerName) {
-		return serviceMethod.addPlayerInDatabase(playerId, playerName);
+	public PlayerInfo addPlayerInDatabase(@PathVariable (name = "playerName") String playerName) {
+		return serviceMethod.addPlayerInDatabase(playerName);
 	}
 	
 	@GetMapping("/score/{playerId}/{score}")

@@ -39,11 +39,10 @@ public class ServiceImplementation implements MethodsInterface {
 	}
 
 	@Override
-	public PlayerInfo addPlayerInDatabase(int playerId, String playerName) {
+	public PlayerInfo addPlayerInDatabase(String playerName) {
 		if (playerRepo.count() > 10)
 			return null;
 		PlayerInfo player = new PlayerInfo();
-		player.setPlayerId(playerId);
 		player.setPlayerName(playerName);
 		player.setBalls(0);
 		player.setPlayerScore(0);
@@ -53,7 +52,7 @@ public class ServiceImplementation implements MethodsInterface {
 
 	@Override
 	public PlayerInfo updateScoreOfPlayers(int playerId, int playerScore) {
-		if (playerScore < 0)
+		if(playerScore>6 || playerScore==5 || playerScore < 0)
 			return null;
 		PlayerInfo player = secondaryService.getPlayer(playerId);
 		if (player.isWicketStatus() == true)
@@ -70,6 +69,8 @@ public class ServiceImplementation implements MethodsInterface {
 	@Override
 	public PlayerInfo updatePlayerWicket(int playerId) {
 		PlayerInfo player = secondaryService.getPlayer(playerId);
+		if(player.isWicketStatus()==true)
+			return null;
 		player.setWicketStatus(true);
 		secondaryService.updateNumberOfBallsPlayed(playerId);
 		return playerRepo.save(player);

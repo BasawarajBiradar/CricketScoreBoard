@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 public class PlayerInfo {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int playerId;
 	private String playerName;
 	private int playerScore;
