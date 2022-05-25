@@ -14,10 +14,10 @@ public interface PlayerRepository extends JpaRepository<PlayerInfo, Integer> {
 	public Integer findCountByWicket();
 
 	@Query(nativeQuery = true, value = "select sum(balls) from player_info")
-	public int findCountByBalls();
+	public Integer findCountByBalls();
 
 	@Query(nativeQuery = true, value = "select sum(player_score) from player_info")
-	public int findCountByPlayerScore();
+	public Integer findCountByPlayerScore();
 
 	@Query(nativeQuery = true, value = "select * from player_info where balls>0 and wicket_status= false")
 	public List<PlayerInfo> findListOfCurrentlyPlayingPlayers();

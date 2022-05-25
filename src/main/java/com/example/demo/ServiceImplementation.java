@@ -26,10 +26,14 @@ public class ServiceImplementation implements MethodsInterface {
 	public String getTotalTeamScore() {
 
 		Integer wicketCount = playerRepo.findCountByWicket();
-		int ballCount = playerRepo.findCountByBalls();
-		int scoreCount = playerRepo.findCountByPlayerScore();
+		Integer ballCount = playerRepo.findCountByBalls();
+		Integer scoreCount = playerRepo.findCountByPlayerScore();
 		if (wicketCount == null)
 			wicketCount = 0;
+		if (ballCount == null)
+			ballCount = 0;
+		if (scoreCount == null)
+			scoreCount = 0;
 		return "( " + scoreCount + "/ " + wicketCount + ") in " + ballCount + " balls";
 
 	}
