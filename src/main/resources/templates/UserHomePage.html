@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Cricket Scoreboard</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container text-center"
+		style="max-width: 600px; margin: 0 auto;">
+		<div></div>
+
+		<h1>User Page</h1>
+
+		<div>
+			<a th:href="@{http://localhost:8080/user/list}"
+				class="btn btn-primary">Players list</a>
+		</div>
+		<div>
+			<a th:href="@{http://localhost:8080/user/current}"
+				class="btn btn-primary">Current Score</a>
+		</div>
+		<div>
+			<a th:href="@{http://localhost:8080/user/teamScore}"
+				class="btn btn-primary">Team score</a>
+		</div>
+
+		
+
+		<h1>score</h1>
+		<div>
+			<h1 class="display-4 font-weight-bold mb-4" th:text="${result}"></h1>
+		</div>
+		<table border="1">
+			<tr>
+				<th>Player Id</th>
+				<th>Player Name</th>
+				<th>score</th>
+				<th>balls</th>
+				<th>wicket</th>
+			</tr>
+			<tr th:each="playerInfo: ${list}">
+				<td th:text="${playerInfo.playerId}" />
+				<td th:text="${playerInfo.playerName}" />
+				<td th:text="${playerInfo.playerScore}" />
+				<td th:text="${playerInfo.balls}" />
+				<td th:text="${playerInfo.wicketStatus}" />
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>player info</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container text-center"
+		style="max-width: 600px; margin: 0 auto;">
+		<h1>Player Information</h1>
+		<table border="1">
+			<tr>
+    			<th>player Id</th>
+				<th>player name</th>
+				<th>score</th>
+				<th>balls</th>
+				<th>wicket status</th>
+			</tr>
+			<tr>
+				<td th:text="${player.playerId}" />
+				<td th:text="${player.playerName}" />
+				<td th:text="${player.playerScore}" />
+				<td th:text="${player.balls}" />
+				<td th:text="${player.wicketStatus}" />
+			</tr>
+		</table>
+		<div>
+			<a th:href="@{http://localhost:8080/admin/home}" class="btn btn-primary">home</a>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Cricket Scoreboard</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div class="container text-center"
+		style="max-width: 600px; margin: 0 auto;">
+		<div></div>
+		<h1>Update Score</h1>
+		<form action="score" method="get"
+			style="max-width: 600px; margin: 0 auto;">
+			<div class="col-8">
+				<div class="form-group row">
+					<label class="col-from-lable col-4">player Id</label>
+					<div class="col-8">
+						<input type="number" name="playerId"></input>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-from-lable col-4">score</label>
+					<div class="col-8">
+						<input type="number" name="playerScore"></input>
+					</div>
+				</div>
+				<div>
+					<button type="submit" class="btn btn-primary">update</button>
+				</div>
+			</div>
+		</form>
+
+		<div>
+			<a th:href="@{http://localhost:8080/Wicket.html}"
+				class="btn btn-primary">Wicket</a>
+		</div>
+		<div>
+			<a th:href="@{http://localhost:8080/AddPlayer.html}"
+				class="btn btn-primary">Add new player</a>
+		</div>
+		<div>
+			<a th:href="@{http://localhost:8080/admin/list}"
+				class="btn btn-primary">Players list</a>
+		</div>
+		<div>
+			<a th:href="@{http://localhost:8080/admin/current}"
+				class="btn btn-primary">Current Score</a>
+		</div>
+		<div>
+			<a th:href="@{http://localhost:8080/admin/teamScore}"
+				class="btn btn-primary">Team score</a>
+		</div>
+
+		<h1>score</h1>
+		<div>
+			<h1 class="display-4 font-weight-bold mb-4" th:text="${result}"></h1>
+		</div>
+		<table border="1">
+			<tr>
+				<th>Player Id</th>
+				<th>Player Name</th>
+				<th>score</th>
+				<th>balls</th>
+				<th>wicket</th>
+			</tr>
+			<tr th:each="playerInfo: ${list}">
+				<td th:text="${playerInfo.playerId}" />
+				<td th:text="${playerInfo.playerName}" />
+				<td th:text="${playerInfo.playerScore}" />
+				<td th:text="${playerInfo.balls}" />
+				<td th:text="${playerInfo.wicketStatus}" />
+			</tr>
+		</table>
+
+	</div>
+
+</body>
+</html>
